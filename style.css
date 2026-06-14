@@ -42,10 +42,9 @@ header{
     z-index:10;
 }
 
-/* BOTÓN OFICIAL */
+/* BOTÓN REGRESAR */
 
 .back-btn{
-
     width:50px;
     height:50px;
 
@@ -61,26 +60,14 @@ header{
     justify-content:center;
     align-items:center;
 
-    padding:0;
-
     color:white;
-
     cursor:pointer;
 }
 
 .arrow{
-
     font-size:20px;
-
     font-weight:300;
-
-    position:relative;
-
-    top:-1px;
-
-    left:-1px;
-
-    color:rgba(255,255,255,.95);
+    color:white;
 }
 
 /* LOGO DH */
@@ -100,28 +87,31 @@ header{
 /* TARJETA */
 
 main{
-    width:100%;
-    height:100vh;
+    position:absolute;
+
+    left:0;
+    right:0;
+
+    bottom:90px;
 
     display:flex;
     justify-content:center;
-    align-items:flex-end;
 
-    padding-bottom:40px;
+    z-index:10;
 }
 
 .auth-card{
 
-    width:88%;
-    max-width:390px;
+    width:82%;
+    max-width:340px;
 
     background:rgba(255,255,255,.16);
 
-    backdrop-filter:blur(8px);
+    backdrop-filter:blur(10px);
 
-    border-radius:22px;
+    border-radius:24px;
 
-    padding:16px 20px 18px;
+    padding:20px;
 
     text-align:center;
 }
@@ -130,33 +120,69 @@ main{
 
     color:white;
 
-    font-size:15px;
+    font-size:14px;
 
     font-weight:700;
 
-    line-height:1.25;
+    line-height:1.3;
 
-    margin-bottom:12px;
+    margin-bottom:14px;
 }
 
 .auth-logo{
 
-    width:68px;
+    width:72px;
 
     display:block;
 
-    margin:0 auto 12px auto;
+    margin:0 auto 14px auto;
 }
 
 .scan-count{
 
     color:white;
 
-    font-size:13px;
+    font-size:15px;
 
     font-weight:600;
 }
 
 #scanCount{
     font-weight:700;
+}
+
+/* CELULARES */
+
+@media(max-width:480px){
+
+    main{
+        bottom:95px;
+    }
+
+    .auth-card{
+
+        width:84%;
+        max-width:320px;
+
+        padding:18px;
+    }
+
+    .auth-card h1{
+
+        font-size:13px;
+
+        margin-bottom:12px;
+    }
+
+    .auth-logo{
+
+        width:65px;
+
+        margin-bottom:12px;
+    }
+
+    .scan-count{
+
+        font-size:14px;
+    }
 }
