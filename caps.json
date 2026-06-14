@@ -1,13 +1,13 @@
 {
   "DH-0001": {
     "nombre": "1004 KM",
-    "video": "activos/background.mp4",
+    "video": "assets/background.mp4",
     "escaneos": 1
   },
 
   "DH-0002": {
     "nombre": "Tokyo Dreams",
-    "video": "activos/tokyo-dreams.mp4",
+    "video": "assets/tokyo-dreams.mp4",
     "escaneos": 1
   }
 }
