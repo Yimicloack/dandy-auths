@@ -36,9 +36,6 @@ async function cargarGorra() {
 
         video.play();
 
-        document.getElementById("capName").textContent =
-            gorra.nombre;
-
         document.getElementById("scanCount").textContent =
             gorra.escaneos;
 
