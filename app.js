@@ -1,28 +1,51 @@
 async function cargarGorra() {
 
-    const params = new URLSearchParams(window.location.search);
+    try {
 
-    const id = params.get("id");
+        const params = new URLSearchParams(window.location.search);
 
-    if (!id) return;
+        const id = params.get("id");
 
-    const response = await fetch("caps.json");
+        if (!id) {
 
-    const data = await response.json();
+            console.log("Sin ID");
 
-    const gorra = data[id];
+            return;
+        }
 
-    if (!gorra) return;
+        const response = await fetch("caps.json");
 
-    const video = document.getElementById("backgroundVideo");
+        const caps = await response.json();
 
-    video.src = gorra.video;
+        const gorra = caps[id];
 
-    document.querySelector("h1").textContent =
-        "Dandy Authentic Product: " + gorra.nombre;
+        if (!gorra) {
 
-    document.getElementById("scanCount").textContent =
-        gorra.escaneos;
+            document.getElementById("capName").textContent =
+                "Producto no encontrado";
+
+            return;
+        }
+
+        const video =
+            document.getElementById("backgroundVideo");
+
+        video.src = gorra.video;
+
+        video.load();
+
+        video.play();
+
+        document.getElementById("capName").textContent =
+            gorra.nombre;
+
+        document.getElementById("scanCount").textContent =
+            gorra.escaneos;
+
+    } catch (error) {
+
+        console.error(error);
+    }
 }
 
 cargarGorra();
