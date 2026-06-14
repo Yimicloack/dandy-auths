@@ -6,12 +6,7 @@ async function cargarGorra() {
 
         const id = params.get("id");
 
-        if (!id) {
-
-            console.log("Sin ID");
-
-            return;
-        }
+        if (!id) return;
 
         const response = await fetch("caps.json");
 
@@ -19,16 +14,9 @@ async function cargarGorra() {
 
         const gorra = caps[id];
 
-        if (!gorra) {
+        if (!gorra) return;
 
-            document.getElementById("capName").textContent =
-                "Producto no encontrado";
-
-            return;
-        }
-
-        const video =
-            document.getElementById("backgroundVideo");
+        const video = document.getElementById("backgroundVideo");
 
         video.src = gorra.video;
 
@@ -42,7 +30,9 @@ async function cargarGorra() {
     } catch (error) {
 
         console.error(error);
+
     }
+
 }
 
 cargarGorra();
