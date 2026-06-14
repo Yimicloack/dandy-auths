@@ -1,97 +1,28 @@
-/* =========================
-   CONTADOR DE ESCANEOS
-========================= */
+async function cargarGorra() {
 
-let scans = localStorage.getItem("scanCount");
+    const params = new URLSearchParams(window.location.search);
 
-if (!scans) {
-    scans = 0;
+    const id = params.get("id");
+
+    if (!id) return;
+
+    const response = await fetch("caps.json");
+
+    const data = await response.json();
+
+    const gorra = data[id];
+
+    if (!gorra) return;
+
+    const video = document.getElementById("backgroundVideo");
+
+    video.src = gorra.video;
+
+    document.querySelector("h1").textContent =
+        "Dandy Authentic Product: " + gorra.nombre;
+
+    document.getElementById("scanCount").textContent =
+        gorra.escaneos;
 }
 
-scans++;
-
-localStorage.setItem(
-    "scanCount",
-    scans
-);
-
-document.getElementById(
-    "scanCount"
-).textContent = scans;
-
-
-/* =========================
-   AUDIO
-========================= */
-
-window.addEventListener("load", () => {
-
-    const audio =
-        document.getElementById(
-            "bgMusic"
-        );
-
-    if (audio) {
-
-        audio.volume = 1;
-
-        audio.play()
-
-            .then(() => {
-
-                console.log(
-                    "Audio iniciado"
-                );
-
-            })
-
-            .catch(error => {
-
-                console.log(
-                    "Autoplay bloqueado:",
-                    error
-                );
-
-            });
-
-    }
-
-});
-
-
-/* =========================
-   PWA
-========================= */
-
-if ("serviceWorker" in navigator) {
-
-    window.addEventListener(
-        "load",
-        () => {
-
-            navigator.serviceWorker
-
-                .register("./sw.js")
-
-                .then(() => {
-
-                    console.log(
-                        "PWA lista"
-                    );
-
-                })
-
-                .catch(error => {
-
-                    console.log(
-                        "Error SW:",
-                        error
-                    );
-
-                });
-
-        }
-
-    );
-
-}
+cargarGorra();
